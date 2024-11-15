@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/logo_sma_kalam_kudus.png" type="image/png">
+    <title>User Profile - SMA Kalam Kudus</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Simple Line Font -->
+    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <!-- Main CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <!-- Profil Foto dan Info Dasar -->
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <div class="position-relative">
+                        <img id="profile-photo" class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile Photo">
+                        <label for="upload-photo" class="edit-photo">
+                            <i class="fa fa-edit"></i> Edit Foto
+                        </label>
+                        <input type="file" id="upload-photo" onchange="loadFile(event)" style="display: none;">
+                    </div>
+                    <span class="font-weight-bold">Albert William Saputra</span>
+                    <span class="text-black-50">albertwilliamsaputra@gmail.com</span>
+                </div>
+            </div>
+
+            <!-- Form Pengaturan Profil -->
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Pengaturan Profil</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12"><label class="labels">Nama Lengkap</label><input type="text" class="form-control" value="Albert William Saputra" placeholder="Nama Lengkap" readonly></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">NISN</label><input type="text" class="form-control" value="123456" placeholder="NISN" readonly></div>
+                        <div class="col-md-6"><label class="labels">Kelas</label><input type="text" class="form-control" value="12 IPA 1" placeholder="Kelas" readonly></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Jurusan</label><input type="text" class="form-control" value="IPA" placeholder="Jurusan" readonly></div>
+                        <div class="col-md-6"><label class="labels">Tanggal Lahir</label><input type="text" class="form-control" value="01 Januari 2005" placeholder="Tanggal Lahir" readonly></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Jenis Kelamin</label><input type="text" class="form-control" value="Laki-laki" placeholder="Jenis Kelamin" readonly></div>
+                        <div class="col-md-6"><label class="labels">Nomor Telepon</label><input type="text" class="form-control" value="08123456789" placeholder="Nomor Telepon"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Alamat</label><input type="text" class="form-control" value="Jl. Mawar No. 12, Jakarta" placeholder="Alamat lengkap"></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value="albertwilliamsaputra@gmail.com" placeholder="Email"></div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" type="button">Simpan Profil</button>
+                        <a href="index.html" class="btn btn-secondary" type="button">Kembali ke Halaman Utama</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Ekstrakurikuler dan Prestasi (Ditampilkan tanpa opsi input oleh user) -->
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Ekstrakurikuler</span></div><br>
+                    <div class="col-md-12"><label class="labels">Ekstrakurikuler</label><input type="text" class="form-control" value="Basketball" placeholder="Ekstrakurikuler" readonly></div> <br>
+                    <div class="col-md-12"><label class="labels">Prestasi</label><input type="text" class="form-control" value="Juara 1 Olimpiade Sains" placeholder="Prestasi" readonly></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk Ganti Foto Profil -->
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('profile-photo');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src); // Free memory
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="images/logo_sma_kalam_kudus.png" type="image/png">
+    <title>Pendaftaran Event SMA Kalam Kudus</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Simple Line Font -->
+    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Main CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Pendaftaran Event (untuk Pengguna yang Sudah Login) -->
+    <section class="event_registration_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 my-5 text-center">
+                    <img src="images/badge-icon.png" class="img-fluid" alt="Ikon Lencana">
+                    <h2 class="blog-category_block pt-0">Pendaftaran Event SMA Kalam Kudus</h2>
+                    <p class="lead text-secondary mb-3">Selamat datang kembali! Daftarkan diri Anda untuk acara seru kami.</p>
+                </div>
+            </div>
+
+            <!-- Menampilkan Nama Pengguna yang Sudah Login -->
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>Selamat datang, <span id="userName">Albert William Saputra</span>!</strong></p>
+                    <p>Anda sudah terdaftar dengan email <strong><span id="userEmail">albertwilliamsaputra@gmail.com</span></strong>. Silakan pilih event yang ingin Anda ikuti.</p>
+                </div>
+            </div>
+
+            <form action="php/event_registration_process.php" method="post" enctype="multipart/form-data" id="eventregistrationform">
+                <div class="row">
+                    <!-- INFORMASI EVENT -->
+                    <div class="col-md-6">
+                        <div class="row form-group">
+                            <div class="col-lg-4">
+                                <label for="event">Event yang Diikuti <span class="required">*</span></label>
+                            </div>
+                            <div class="col-lg-8">
+                                <select class="form-control custom-select" name="event" id="event" required>
+                                    <option value="">Pilih Event</option>
+                                    <option value="teachers_appreciation_day">Teachers' Appreciation Day</option>
+                                    <option value="cultural_festival">Cultural Festival</option>
+                                    <option value="science_fair">Science Fair 2024</option>
+                                    <option value="student_art_exhibition">Student Art Exhibition</option>
+                                    <option value="annual_sports_day">Annual Sports Day 2024</option>
+                                    <option value="graduation_ceremony">Graduation Ceremony</option>
+                                    <option value="other">Yang lain:</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-4">
+                                <label for="participation_type">Jenis Partisipasi</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <select class="form-control custom-select" name="participation_type" id="participation_type">
+                                    <option value="individual">Individu</option>
+                                    <option value="group">Kelompok</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PILIHAN TAMBAHAN -->
+                    <div class="col-md-6">
+                        <div class="row form-group">
+                            <div class="col-lg-4">
+                                <label for="food_preference">Preferensi Makanan</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="text" name="food_preference" id="food_preference" class="form-control" placeholder="Misalnya: Vegetarian, Vegan, dll.">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-4">
+                                <label for="shirt_size">Ukuran T-Shirt</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <select class="form-control custom-select" name="shirt_size" id="shirt_size">
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                    <option value="xl">XL</option>
+                                    <option value="xxl">XXL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-lg-4">
+                                <label for="special_needs">Kebutuhan Khusus</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="text" name="special_needs" id="special_needs" class="form-control" placeholder="Misalnya: Aksesibilitas, Bantuan Khusus">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERSYARATAN DAN KEBIJAKAN -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="confirmation_attendance" required>
+                            <label class="form-check-label" for="confirmation_attendance">Konfirmasi Kehadiran</label>
+                        </div>
+                        <div id="attendanceInfo" class="collapse">
+                            <p>Dengan memilih kotak ini, Anda mengonfirmasi bahwa Anda akan hadir pada acara yang telah Anda pilih. Kehadiran Anda penting bagi kami dalam mempersiapkan acara dengan baik dan memastikan kelancaran acara.</p>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="terms_and_conditions" required>
+                            <label class="form-check-label" for="terms_and_conditions">Persetujuan Syarat dan Ketentuan</label>
+                        </div>
+                        <div id="termsInfo" class="collapse">
+                            <p>Dengan memilih kotak ini, Anda menyetujui syarat dan ketentuan yang berlaku selama acara. Hal ini mencakup aturan mengenai pendaftaran, kehadiran, serta penggunaan data pribadi Anda dalam rangka acara ini.</p>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="data_usage_permission" required>
+                            <label class="form-check-label" for="data_usage_permission">Persetujuan Penggunaan Data Pribadi</label>
+                        </div>
+                        <div id="dataUsageInfo" class="collapse">
+                            <p>Dengan memilih kotak ini, Anda memberi izin untuk menggunakan data pribadi yang Anda berikan untuk keperluan acara ini sesuai dengan kebijakan privasi kami.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TOMBOL AKSI -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary mt-4" id="js-event-registration-btn">Kirim Pendaftaran</button>
+                        <button type="reset" class="btn btn-secondary mt-4" id="js-event-registration-reset">Reset</button>
+                    </div>
+                </div>
+                </form>
+                
+                <div class="row">
+                    <div class="col-md-12 text-center mt-4">
+                        <a href="events.html" class="btn" style="background-color: #cbb58b; color: white;">Kembali ke Halaman Events</a>
+                    </div>
+                </div>                
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('confirmation_attendance').addEventListener('click', function() {
+            document.getElementById('attendanceInfo').classList.toggle('collapse');
+        });
+
+        document.getElementById('terms_and_conditions').addEventListener('click', function() {
+            document.getElementById('termsInfo').classList.toggle('collapse');
+        });
+
+        document.getElementById('data_usage_permission').addEventListener('click', function() {
+            document.getElementById('dataUsageInfo').classList.toggle('collapse');
+        });
+
+        
+    </script>
+
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
