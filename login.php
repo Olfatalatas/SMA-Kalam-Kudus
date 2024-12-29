@@ -1,3 +1,8 @@
+<?php
+session_start();
+$error_message = isset($_SESSION['error']) ? $_SESSION['error'] : null;
+unset($_SESSION['error']); // Hapus pesan error setelah dibaca
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +42,12 @@
                           <div class="row">
                               <div class="col-md-12">
                                   <div class="well">
-                                      <form id="loginForm" method="POST" action="home.html" novalidate="novalidate">
+                                    <?php if ($error_message): ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= $error_message ?>
+                                        </div>
+                                    <?php endif; ?>
+                                      <form id="loginForm" method="POST" action="php/login/login.php">
                                           <div class="form-group">
                                               <label for="email" class="control-label">Email</label>
                                               <input type="email" class="form-control" id="email" name="email" value="" required="" title="Please enter you email" placeholder="example@gmail.com">

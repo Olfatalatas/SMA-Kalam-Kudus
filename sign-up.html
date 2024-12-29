@@ -31,7 +31,8 @@
     <h1 class="text-center">SIGN-UP</h1>
       <div class="row justify-content-center">
           <div class="col-xs-12 col-sm-12 col-md-5 well well-sm">
-              <form action="login.html" class="form sign-up-form">
+            <div id="error-message" class="alert alert-danger d-none" role="alert"></div>
+              <form action="php/signup/signup.php" method="POST" class="form sign-up-form" id="signup-form" onsubmit="return validateForm()">
                 <div class="row">
                     <div class="col-xs-6 col-md-6">
                         <div class="form-group">
@@ -46,29 +47,23 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" name="youremail" placeholder="Your Email" type="email" required/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" name="alamat" placeholder="Alamat" type="text" required/>
+                    <input class="form-control" name="email" placeholder="Your Email" type="email" required/>
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="telp" placeholder="No.Telp" type="tel" required/>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" name="password" placeholder="Password" type="password" required/>
+                    <input class="form-control" name="password" placeholder="Password" type="password" id="password" required/>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" name="password" placeholder="Re-Type Password" type="password" required/>
+                    <input class="form-control" name="repassword" placeholder="Re-Type Password" type="password" id="repassword" required/>
                 </div>
-                <label>
-                    Birth Date</label>
-                <input type="date" class="form-control" id="birthdate" name="birthdate" required>
                 <label class="radio-inline">
-                    <input type="radio" name="sex" id="inlineCheckbox1" value="male"/>
+                    <input type="radio" name="sex" id="inlineCheckbox1" value="Laki - Laki"/>
                     Male
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="sex" id="inlineCheckbox2" value="female"/>
+                    <input type="radio" name="sex" id="inlineCheckbox2" value="Perempuan"/>
                     Female
                 </label>
                 <br />
@@ -83,22 +78,49 @@
 </div>
 </div>
 <!--//End Login -->
-            <!-- jQuery, Bootstrap JS. -->
-            <script src="js/jquery.min.js"></script>
-            <script src="js/tether.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <!-- Plugins -->
-            <script src="js/slick.min.js"></script>
-            <script src="js/waypoints.min.js"></script>
-            <script src="js/counterup.min.js"></script>
-            <script src="js/instafeed.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>
-            <script src="js/validate.js"></script>
-            <script src="js/tweetie.min.js"></script>
+<!-- jQuery, Bootstrap JS. -->
+<script src="js/jquery.min.js"></script>
+<script src="js/tether.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script src="js/slick.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/counterup.min.js"></script>
+<script src="js/instafeed.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/tweetie.min.js"></script>
             <!-- Subscribe -->
-            <script src="js/subscribe.js"></script>
+<script src="js/subscribe.js"></script>
             <!-- Script JS -->
-            <script src="js/script.js"></script>
-        </body>
+<script src="js/script.js"></script>
+<script>
+    function validateForm() {
+        const password = document.getElementById("password").value;
+        const repassword = document.getElementById("repassword").value;
+        const errorMessage = document.getElementById("error-message");
 
-        </html>
+        // Reset pesan error
+        errorMessage.classList.add("d-none");
+        errorMessage.textContent = "";
+
+        // Validasi panjang password
+        if (password.length < 8) {
+            errorMessage.textContent = "Password harus memiliki panjang minimal 8 karakter!";
+            errorMessage.classList.remove("d-none");
+            return false; // Mencegah pengiriman formulir
+        }
+
+        // Validasi kecocokan password
+        if (password !== repassword) {
+            errorMessage.textContent = "Password tidak cocok! Silakan coba lagi.";
+            errorMessage.classList.remove("d-none");
+            return false; // Mencegah pengiriman formulir
+        }
+
+        // Jika semua validasi lulus, kirim formulir
+        return true;
+    }
+</script>
+</body>
+</html>
